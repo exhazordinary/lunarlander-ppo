@@ -1,0 +1,21 @@
+# Prevent Docker from copying unnecessary files into the build context
+
+# Python junk
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+
+# Logs and models
+*.log
+models/
+
+# Git files
+.git
+.gitignore
+
+# IDE configs
+.vscode/
+.idea/

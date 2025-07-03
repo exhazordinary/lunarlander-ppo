@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  rl-agent:
+    build: .
+    image: lunarlander-minimal:latest
+    container_name: lunarlander-minimal
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./models:/app/models
+    tty: true
