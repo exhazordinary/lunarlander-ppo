@@ -1,11 +1,13 @@
-# LunarLander Minimal Agent
+# LunarLander PPO Agent
 
-A minimal implementation for running the OpenAI Gym LunarLander-v3 environment using random actions. This project provides simple scripts to interact with the environment and observe agent performance.
+A minimal implementation for training and evaluating a Proximal Policy Optimization (PPO) agent on the OpenAI Gymnasium LunarLander-v3 environment using [stable-baselines3](https://stable-baselines3.readthedocs.io/). This project provides scripts to train a PPO agent, save checkpoints, log to TensorBoard, and evaluate the trained model with rendering.
 
 ## Features
 
-- Run LunarLander-v3 (Box2D) with a random agent
-- Simple training and evaluation scripts
+- Train a PPO agent on LunarLander-v3 (Box2D) using stable-baselines3
+- Save model checkpoints and final trained model
+- TensorBoard logging for training metrics
+- Evaluate the trained agent with environment rendering
 - Easy setup with pip or Docker
 
 ## File Structure
@@ -18,7 +20,9 @@ lunarlander-ppo/
 ├── train.py
 ├── evaluate.py
 ├── README.md
-└── .gitignore
+├── .gitignore
+├── models/
+└── logs/
 ```
 
 ## Installation
@@ -48,27 +52,42 @@ lunarlander-ppo/
 
 ## Usage
 
-### Run Training Script
+### Train the PPO Agent
 
 ```
 python train.py
 ```
 
-- Runs a random agent on LunarLander-v3 for several episodes.
-- Prints the reward for each episode and the average reward.
+- Trains a PPO agent on the LunarLander-v3 environment.
+- Saves model checkpoints to the `models/` directory every 10,000 steps.
+- Logs training metrics to the `logs/` directory for TensorBoard visualization.
+- Saves the final trained model as `ppo_lunarlander`.
 
-### Run Evaluation Script
+To view training progress in TensorBoard:
+```
+tensorboard --logdir logs/
+```
+
+### Evaluate the Trained Agent
 
 ```
 python evaluate.py
 ```
 
-- Runs a random agent on LunarLander-v3 for several episodes.
-- Renders the environment and prints the reward for each episode and the average reward.
+- Loads the trained PPO model from `ppo_lunarlander`.
+- Runs 3 evaluation episodes with environment rendering enabled.
+- Prints the reward for each episode.
+
+## Model Saving and Logs
+
+- **Checkpoints:** Saved in the `models/` directory during training.
+- **Final Model:** Saved as `ppo_lunarlander` in the project root.
+- **Logs:** Training logs for TensorBoard are saved in the `logs/` directory.
 
 ## References
 
-- [OpenAI Gymnasium](https://gym.openai.com/)
+- [OpenAI Gymnasium](https://gymnasium.farama.org/)
+- [Stable Baselines3](https://stable-baselines3.readthedocs.io/)
 
 ## License
 
